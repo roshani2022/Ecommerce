@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import "./Product.css";
+import CartContext from "../store/CartContext";
 
 const productsArr = [
   {
@@ -26,6 +27,18 @@ const productsArr = [
 ];
 
 const Product = () => {
+  const cartContext = useContext(CartContext);
+
+  const addItemToCartHandler = (item) => {
+    cartContext.addItem({
+      ...item,
+      id:item.title,
+      quantity:1
+    })
+    
+    
+  };
+
   return (
     <Container>
       <h1 className="text-center mb-4" style={{ fontFamily: "fangsong" }}>
@@ -49,7 +62,12 @@ const Product = () => {
                 <p>Price: ${product.price}</p>
               </Col>
               <Col md={4}>
-                <Button variant="primary" >Add To Cart</Button>
+                <Button
+                  variant="primary"
+                  onClick={() => addItemToCartHandler(product)}
+                >
+                  Add To Cart
+                </Button>
               </Col>
             </Row>
           </Col>

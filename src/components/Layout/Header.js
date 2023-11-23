@@ -1,10 +1,11 @@
 import React from "react";
-import { Navbar, Nav, Container, Button, Row, Col, Badge } from "react-bootstrap";
+import HeaderButton from "./HeaderButton";
+import { Navbar, Nav, Container,  Row, Col, } from "react-bootstrap";
 
 const Header = (props) => {
   return (
     <>
-      <Navbar
+      <Navbar sticky="top" 
         expand="lg"
         bg="dark"
         variant="dark"
@@ -17,7 +18,7 @@ const Header = (props) => {
             <Nav.Link href="#store">STORE</Nav.Link>
             <Nav.Link href="#about">ABOUT</Nav.Link>
           </Nav>
-          <Button variant="outline-primary" style={{ color: "white" }} 
+          {/* <Button variant="outline-primary" style={{ color: "white" }} 
           onClick ={props.onShowCart}>
             CART
           </Button>
@@ -31,8 +32,10 @@ const Header = (props) => {
             }}
           >
             0
-          </Badge>
+          </Badge> */}
+           <HeaderButton  onClick ={props.onShowCart}/>
         </Container>
+       
       </Navbar>
 
       <Container fluid>

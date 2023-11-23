@@ -1,8 +1,23 @@
 import React from "react";
 import CartItem from "./CartItem";
 import { Button, Modal } from "react-bootstrap";
+import CartContext from "../store/CartContext";
+import { useContext } from "react";
 
 const Cart = (props) => {
+
+ const cartContext = useContext(CartContext)
+
+    const handlePurchase = () => {
+        
+        window.alert("Thank you for purchasing!");
+      };
+
+      let totalAmount = 0;
+      cartContext.items.forEach((item) => {
+        totalAmount += item.price * item.quantity;
+      });
+
   return (
     <Modal show={true} onHide={props.onClose} backdrop="static" keyboard={false} size="md">
       <Modal.Header closeButton >
@@ -13,11 +28,11 @@ const Cart = (props) => {
       <Modal.Body>
         <CartItem />
         <h3 className="text-end">
-          Total {"   "}${0}
+          Total {"   "}${totalAmount}
         </h3>
       </Modal.Body>
       <Modal.Footer className="justify-content-center">
-        <Button >PURCHASE</Button>
+        <Button onClick={handlePurchase}>PURCHASE</Button>
       </Modal.Footer>
     </Modal>
   );

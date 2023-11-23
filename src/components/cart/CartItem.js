@@ -1,28 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import CartContext from "../store/CartContext";
 
-const cartElements = [
-  {
-    title: "Colors",
-    price: 100,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    quantity: 2,
-  },
-  {
-    title: "Black and white Colors",
-    price: 50,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    quantity: 3,
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-];
-// style={{ fontFamily: "fantasy" }}
-const CartItem = () => {
+const CartItem = (props) => {
+
+  const cartContext = useContext(CartContext)
+
+  const removeItem = (id) => {
+     cartContext.removeItem(id)
+  }
   return (
     <>
       <Container>
@@ -37,7 +23,7 @@ const CartItem = () => {
             <h4 className="px-3">QUANTITY</h4>
           </Col>
         </Row>
-        {cartElements.map((product, index) => (
+        {cartContext.items.map((product, index) => (
           <Row key={index} className="mb-2 mt-2 border-bottom dark" >
             <Col md={6}>
               <Row>
@@ -45,7 +31,7 @@ const CartItem = () => {
                   <img
                     src={product.imageUrl}
                     alt={product.title}
-                    className="img-fluid mt-2 product-image"
+                    className="img-fluid mt-2 mb-2 product-image"
                   />
                 </Col>
                 <Col xs={4}>
@@ -55,16 +41,16 @@ const CartItem = () => {
                 </Col>
               </Row>
             </Col>
-            <Col md={2} className="px-0" >{product.price}</Col>
+            <Col md={2} className="px-0 mt-3" >{product.price}</Col>
             <Col md={4}>
-              <Row>
-                <Col xs={4} className="mt-2">
+              <Row  className="mt-3">
+                <Col xs={4}>
                   <span className="border border-primary p-2 ">
                     {product.quantity}
                   </span>
                 </Col>
                 <Col xs={8} >
-                  <Button variant="danger">Remove</Button>
+                  <Button variant="danger" onClick={()=>removeItem(product.id)}>Remove</Button>
                 </Col>
               </Row>
             </Col>
