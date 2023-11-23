@@ -1,7 +1,7 @@
 import React from "react";
-import { Navbar, Nav, Container, Button, Row, Col } from "react-bootstrap";
+import { Navbar, Nav, Container, Button, Row, Col, Badge } from "react-bootstrap";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
       <Navbar
@@ -17,10 +17,11 @@ const Header = () => {
             <Nav.Link href="#store">STORE</Nav.Link>
             <Nav.Link href="#about">ABOUT</Nav.Link>
           </Nav>
-          <Button variant="outline-primary" style={{ color: "white" }}>
+          <Button variant="outline-primary" style={{ color: "white" }} 
+          onClick ={props.onShowCart}>
             CART
           </Button>
-          <span
+          <Badge bg="secondary"
             className="text-white"
             style={{
               fontSize: "0.8em",
@@ -30,7 +31,7 @@ const Header = () => {
             }}
           >
             0
-          </span>
+          </Badge>
         </Container>
       </Navbar>
 

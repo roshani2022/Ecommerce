@@ -49,7 +49,7 @@ const Product = () => {
                 <p>Price: ${product.price}</p>
               </Col>
               <Col md={4}>
-                <Button variant="primary">Add To Cart</Button>
+                <Button variant="primary" >Add To Cart</Button>
               </Col>
             </Row>
           </Col>
