@@ -1,40 +1,16 @@
-import React,{useState} from "react";
+import React from "react";
 import "./App.css";
-import Product from "./components/Products/Product";
-import Header from "./components/Layout/Header";
-import Footer from "./components/Layout/Footer";
-import Cart from "./components/cart/Cart"
-import { Button ,Row,Col,Container} from "react-bootstrap";
-import CartProvider from "./components/store/CartProvider";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import About from "./components/About/About";
+import Store from "./components/Store/Store";
+
+const router = createBrowserRouter([
+  { path: "/about", element: <About /> },
+  { path: "/store", element: <Store /> },
+]);
 
 function App() {
-
-  const [showCart, setShowCart] = useState(false);
-
-  const handleClose = () => setShowCart(false);
-  const handleShow = () => setShowCart(true);
-
-  return (
-    <CartProvider>
-      
-      {showCart && <Cart onClose={handleClose}/> }
-      <Header onShowCart={handleShow} />
-      <Product/>
-
-    
-       
-      <Container className="justify-content-center" >
-      <Row >
-        <Col xs={12} className="text-center mt-3">
-          <Button style={{ background: "gray", color: "white", margin: "10px" }}
-         onClick = {()=>handleShow()}>See the cart</Button>
-        </Col>
-      </Row>
-      </Container> 
-      <Footer/>
-    
-    </CartProvider>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import "./Product.css";
-import CartContext from "../store/CartContext";
+import CartContext from "../Context/CartContext";
 
 const productsArr = [
   {

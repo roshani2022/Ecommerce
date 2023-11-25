@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import CartContext from "../store/CartContext";
+import CartContext from "../Context/CartContext";
 import { Button, Badge } from "react-bootstrap";
 
 const HeaderButton = (props) => {

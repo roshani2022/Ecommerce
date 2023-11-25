@@ -1,23 +1,19 @@
-import { NavLink } from "react-router-dom";
 import React from "react";
-import HeaderButton from "./HeaderButton";
-import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
-
-const Header = (props) => {
+import { NavLink } from "react-router-dom";
+import { Container, Nav, Navbar,Row,Col } from "react-bootstrap";
+const NavBBar = () => {
   return (
     <>
       <Navbar sticky="top" expand="lg" bg="dark" variant="dark">
         <Container className="justify-content-center">
-          <Nav 
-            style={{ fontWeight: "bold", fontFamily: "fangsong"}}
+          <Nav
+            style={{ fontWeight: "bold", fontFamily: "fangsong",textDecoration:"none" }}
           >
              <NavLink to="/home" style={{ marginRight: "15px", textDecoration: "none",color:"white" }}>HOME</NavLink>
             <NavLink to="/store" style={{ marginRight: "15px", textDecoration: "none",color:"white" }}>STORE</NavLink>
             <NavLink to="/about" style={{ textDecoration: "none",color:"white" }}>ABOUT</NavLink>
           </Nav>
         </Container>
-
-        <HeaderButton onClick={props.onShowCart} />
       </Navbar>
 
       <Container fluid>
@@ -46,4 +42,4 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+export default NavBBar;
