@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import Footer from "../Layout/Footer";
-import NavBBar from "../Layout/NavBBar";
+import AboutHeader from "./AboutHeader";
 
 const About = () => {
   return (
     <>
-      <NavBBar />
+      <AboutHeader/>
       <h1 className="text-center mt-2">ABOUT</h1>
       <Container className="mt-3 p-0" style={{ maxWidth: "900px" }}>
         <Row>
