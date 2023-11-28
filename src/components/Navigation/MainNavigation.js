@@ -1,20 +1,16 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { useLocation, NavLink } from "react-router-dom";
 import { Container, Nav, Navbar, Badge, Button } from "react-bootstrap";
 import CartContext from "../Context/CartContext";
 
 const MainNavigation = (props) => {
   const location = useLocation();
-  const [buttonVisible, setButtonVisible] = useState(
-    location.pathname === "/store"
-  );
 
-  useEffect(() => {
-    setButtonVisible(location.pathname === "/store");
-  }, [location.pathname]);
+  const isStoreVisible = location.pathname === "/store";
 
-  const buttonVisibleHandler = () => {
-    setButtonVisible(false);
+  const buttonVisibleHandler = (event) => {
+    event.preventDefault();
+    props.onShow();
   };
 
   const cartCtx = useContext(CartContext);
@@ -35,7 +31,7 @@ const MainNavigation = (props) => {
         style={{ borderBottom: "1px solid white" }}
       >
         <Container className="justify-content-center">
-          <Nav
+          <Nav 
             style={{
               fontWeight: "bold",
               fontFamily: "fangsong",
@@ -49,7 +45,6 @@ const MainNavigation = (props) => {
                 textDecoration: "none",
                 color: "white",
               }}
-              onClick={buttonVisibleHandler}
             >
               HOME
             </NavLink>
@@ -65,21 +60,30 @@ const MainNavigation = (props) => {
             </NavLink>
             <NavLink
               to="/about"
-              style={{ textDecoration: "none", color: "white" }}
-              onClick={buttonVisibleHandler}
+              style={{
+                textDecoration: "none",
+                color: "white",
+                marginRight: "15px",
+              }}
             >
               ABOUT
             </NavLink>
+            <NavLink
+              to="/contactUs"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              CONTACT US
+            </NavLink>
           </Nav>
         </Container>
-        {buttonVisible && (
+        {isStoreVisible && (
           <div>
             <Button
               variant="outline-primary"
               style={{ color: "white" }}
-              onClick={props.onShow}
               to="/cart"
               size="sm"
+              onClick={buttonVisibleHandler}
             >
               CART
             </Button>

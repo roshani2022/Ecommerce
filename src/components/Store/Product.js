@@ -40,13 +40,13 @@ const Product = () => {
   };
 
   return (
-    <Container>
+    <Container >
       <h1 className="text-center mb-4" style={{ fontFamily: "fangsong" }}>
         Music
       </h1>
       <Row>
         {productsArr.map((product, index) => (
-          <Col key={index} md={6} lg={6} className="mb-4">
+          <Col key={index} md={6} lg={6} className="mb-4 ">
             <h3 className="ms-5" style={{ fontFamily: "fantasy" }}>
               {product.title}
             </h3>
@@ -57,11 +57,11 @@ const Product = () => {
               className="img-fluid mt-2 product-image"
             />
 
-            <Row className="mt-2 mb-2">
-              <Col md={4}>
+            <Row className="mt-2 mb-2 " >
+              <Col md={4} >
                 <p>Price: ${product.price}</p>
               </Col>
-              <Col md={4}>
+              <Col md={4} >
                 <Button
                   variant="primary"
                   onClick={() => addItemToCartHandler(product)}

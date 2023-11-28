@@ -1,7 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import HomeHeader from "./HomeHeader";
 import HomeFooter from "./HomeFooter";
-//import MainNavigation from "../Navigation/MainNavigation";
 
 const plays = [
   { date: "JUL16", city: "DETROIT, MI", theater: "DTE ENERGY MUSIC THEATRE" },
