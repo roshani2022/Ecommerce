@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import "./Product.css";
 import CartContext from "../Context/CartContext";
 
-const productsArr = [
+ export const productsArr = [
   {
     title: "Colors",
     price: 100,
@@ -48,7 +49,12 @@ const Product = () => {
         {productsArr.map((product, index) => (
           <Col key={index} md={6} lg={6} className="mb-4 ">
             <h3 className="ms-5" style={{ fontFamily: "fantasy" }}>
-              {product.title}
+            <Link
+                to={`/store/${product.title}`} // Include the dynamic parameter
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                {product.title}
+              </Link>
             </h3>
 
             <img

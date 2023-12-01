@@ -8,11 +8,6 @@ const MainNavigation = (props) => {
 
   const isStoreVisible = location.pathname === "/store";
 
-  const buttonVisibleHandler = (event) => {
-    event.preventDefault();
-    props.onShow();
-  };
-
   const cartCtx = useContext(CartContext);
 
   let quantity = 0;
@@ -31,7 +26,7 @@ const MainNavigation = (props) => {
         style={{ borderBottom: "1px solid white" }}
       >
         <Container className="justify-content-center">
-          <Nav 
+          <Nav
             style={{
               fontWeight: "bold",
               fontFamily: "fangsong",
@@ -39,7 +34,7 @@ const MainNavigation = (props) => {
             }}
           >
             <NavLink
-              to="/home"
+              to="/"
               style={{
                 marginRight: "15px",
                 textDecoration: "none",
@@ -83,7 +78,7 @@ const MainNavigation = (props) => {
               style={{ color: "white" }}
               to="/cart"
               size="sm"
-              onClick={buttonVisibleHandler}
+              onClick={() => props.onShow()}
             >
               CART
             </Button>

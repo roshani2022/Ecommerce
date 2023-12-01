@@ -1,10 +1,12 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
-
+import React  from "react";
 import Product from "./Product";
 import Footer from "../Layout/Footer";
 import StoreHeader from "./StoreHeader";
 
-const Store = () => {
+
+const Store = (props) => {
+
   return (
     <>
       <StoreHeader />
@@ -14,13 +16,15 @@ const Store = () => {
           <Col xs={12} className="text-center mt-3">
             <Button
               style={{ background: "gray", color: "white", margin: "10px" }}
+              onClick={props.handleShow}
             >
               See the cart
-            </Button>
+            </Button >
           </Col>
         </Row>
       </Container>
       <Footer />
+
     </>
   );
 };
