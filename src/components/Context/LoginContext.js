@@ -4,6 +4,7 @@ const LoginContext = React.createContext({
   token: "",
   isLoggedIn: false,
   login: (token) => {},
+  logout: () => {},
  
 });
 
@@ -18,12 +19,16 @@ export const LoginContextProvider = (props) => {
     localStorage.setItem('token',token)
   };
 
-  
+  const logoutHandler = () => {
+    setToken(null);
+    localStorage.removeItem('token')
+  };
 
   const contextValue = {
     token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
+    logout: logoutHandler,
     
   };
 

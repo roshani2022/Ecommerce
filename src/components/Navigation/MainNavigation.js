@@ -1,17 +1,24 @@
 import React, { useContext } from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar, Badge, Button } from "react-bootstrap";
 import CartContext from "../Context/CartContext";
-
+import LoginContext from "../Context/LoginContext";
 
 const MainNavigation = (props) => {
-
-  
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isStoreVisible = location.pathname === "/store";
 
   const cartCtx = useContext(CartContext);
+  const loginCtx = useContext(LoginContext);
+
+  const isLoggedIn = loginCtx.isLoggedIn;
+
+  const logoutHandler = () => {
+    loginCtx.logout();
+    navigate("/Login");
+  };
 
   let quantity = 0;
 
@@ -26,7 +33,7 @@ const MainNavigation = (props) => {
         expand="lg"
         bg="dark"
         variant="dark"
-        style={{ borderBottom: "1px solid white",height:"3rem"}}
+        style={{ borderBottom: "1px solid white", height: "3rem" }}
       >
         <Container className="justify-content-center">
           <Nav
@@ -37,7 +44,7 @@ const MainNavigation = (props) => {
             }}
           >
             <NavLink
-              to="/"
+              to="/Home"
               style={{
                 marginRight: "15px",
                 textDecoration: "none",
@@ -68,24 +75,42 @@ const MainNavigation = (props) => {
             </NavLink>
             <NavLink
               to="/contactUs"
-              style={{ textDecoration: "none", color: "white",marginRight:"15px" }}
+              style={{
+                textDecoration: "none",
+                color: "white",
+                marginRight: "30px",
+              }}
             >
               CONTACT US
             </NavLink>
 
-              <NavLink
+            <NavLink
               to="/login"
-              style={{ textDecoration: "none", color: "white",marginRight:"15px" }}
+              style={{
+                textDecoration: "none",
+                color: "white",
+                marginRight: "15px",
+              }}
             >
               LOGIN
             </NavLink>
-
-            
-            
+            {isLoggedIn && (
+              <Button
+                onClick={logoutHandler}
+                style={{
+                  border: "none",
+                  backgroundColor: "transparent",
+                  fontWeight: "bold",
+                  marginTop:'0px'
+                }}
+              >
+                LOGOUT
+              </Button>
+            )}
           </Nav>
         </Container>
         {isStoreVisible && (
-          <div>
+          <div >
             <Button
               variant="outline-primary"
               style={{ color: "white" }}
