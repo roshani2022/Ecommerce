@@ -16,7 +16,7 @@ const Store = (props) => {
           <Col xs={12} className="text-center mt-3">
             <Button
               style={{ background: "gray", color: "white", margin: "10px" }}
-              onClick={props.handleShow}
+             
             >
               See the cart
             </Button >

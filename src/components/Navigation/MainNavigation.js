@@ -3,7 +3,10 @@ import { useLocation, NavLink } from "react-router-dom";
 import { Container, Nav, Navbar, Badge, Button } from "react-bootstrap";
 import CartContext from "../Context/CartContext";
 
+
 const MainNavigation = (props) => {
+
+  
   const location = useLocation();
 
   const isStoreVisible = location.pathname === "/store";
@@ -23,7 +26,7 @@ const MainNavigation = (props) => {
         expand="lg"
         bg="dark"
         variant="dark"
-        style={{ borderBottom: "1px solid white" }}
+        style={{ borderBottom: "1px solid white",height:"3rem"}}
       >
         <Container className="justify-content-center">
           <Nav
@@ -65,10 +68,20 @@ const MainNavigation = (props) => {
             </NavLink>
             <NavLink
               to="/contactUs"
-              style={{ textDecoration: "none", color: "white" }}
+              style={{ textDecoration: "none", color: "white",marginRight:"15px" }}
             >
               CONTACT US
             </NavLink>
+
+              <NavLink
+              to="/login"
+              style={{ textDecoration: "none", color: "white",marginRight:"15px" }}
+            >
+              LOGIN
+            </NavLink>
+
+            
+            
           </Nav>
         </Container>
         {isStoreVisible && (
