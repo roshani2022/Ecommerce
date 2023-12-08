@@ -22,10 +22,12 @@ const MainNavigation = (props) => {
 
   let quantity = 0;
 
+ 
   cartCtx.items.forEach((item) => {
-    quantity = quantity + Number(item.quantity);
+    quantity = Number(quantity) + Number(item.quantity);
   });
 
+  
   return (
     <>
       <Navbar
