@@ -5,6 +5,7 @@ import axios from "axios";
 const CartProvider = (props) => {
   const [items, setItems] = useState([]);
   const userEmail = "abc12gcom";
+  let url ="https://crudcrud.com/api/d269d04285684a088019efe727cc6389"
 
   const addItemToCartHandler = async (item) => {
     const existingItemIndex = items.findIndex(
@@ -19,7 +20,7 @@ const CartProvider = (props) => {
 
       try {
         await axios.put(
-          `https://crudcrud.com/api/28223422b69445cab3184ff2ad456090/cart${userEmail}/${userId}`,
+          `${url}/cart${userEmail}/${userId}`,
           {
             ...item,
             quantity: Number(updatedItems[existingItemIndex].quantity),
@@ -33,7 +34,7 @@ const CartProvider = (props) => {
     } else {
       try {
         const response = await axios.post(
-          `https://crudcrud.com/api/28223422b69445cab3184ff2ad456090/cart${userEmail}`,
+          `${url}/cart${userEmail}`,
 
           item
         );
@@ -49,7 +50,7 @@ const CartProvider = (props) => {
     const getCartItems = async () => {
       try {
         const response = await axios.get(
-          `https://crudcrud.com/api/28223422b69445cab3184ff2ad456090/cart${userEmail}`
+          `${url}/cart${userEmail}`
         );
 
         setItems(response.data);
@@ -76,7 +77,7 @@ const CartProvider = (props) => {
 
         try {
           const response = await axios.put(
-            `https://crudcrud.com/api/28223422b69445cab3184ff2ad456090/cart${userEmail}/${userId}`,
+            `${url}/cart${userEmail}/${userId}`,
             {
               ...newItem,
             }
@@ -84,7 +85,7 @@ const CartProvider = (props) => {
           setItems(response.data);
         } catch (err) {
           console.error("Error updating quantity:", err);
-          // Handle error, e.g., show a message to the user
+         
         }
         setItems(updatedItems);
       } else {
@@ -93,7 +94,7 @@ const CartProvider = (props) => {
 
         try {
           const response = await axios.delete(
-            `https://crudcrud.com/api/28223422b69445cab3184ff2ad456090/cart${userEmail}/${userId}`
+            `${url}/cart${userEmail}/${userId}`
           );
           setItems(response.data);
         } catch (err) {

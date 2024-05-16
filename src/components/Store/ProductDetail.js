@@ -6,8 +6,8 @@ import AboutHeader from "../About/AboutHeader";
 import Footer from "../Layout/Footer";
 
 const ProductDetail = () => {
-  const params = useParams();
-
+  
+const params = useParams();
   const product = productsArr.find((p) => p.title === params.title);
   
   
