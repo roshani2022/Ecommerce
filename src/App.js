@@ -17,7 +17,7 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const loginCtx = useContext(LoginContext);
 
-  const isLoggedIn = loginCtx.isLoggedIn;a
+  const isLoggedIn = loginCtx.isLoggedIn;
 
   const handleClose = () => setShowCart(false);
   const handleShow = () => setShowCart(true);
