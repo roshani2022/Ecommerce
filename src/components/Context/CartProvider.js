@@ -59,7 +59,7 @@ const CartProvider = (props) => {
       }
     };
     getCartItems();
-  }, [userEmail]);
+  }, [userEmail,url]);
 
   const removeItemFromCartHandler = async (id) => {
     const existingItemIndex = items.findIndex((cartItem) => cartItem.id === id);
